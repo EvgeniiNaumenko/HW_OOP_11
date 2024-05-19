@@ -35,6 +35,11 @@ MyString::MyString(const MyString& obj)
 
 	}
 }
+MyString::MyString(int lenght)
+{
+	_length = lenght;
+	_str = new char[_length+1];
+}
 
 MyString& MyString::operator=(const MyString& str)
 {
@@ -48,6 +53,25 @@ MyString& MyString::operator=(const MyString& str)
 	return *this;
 }
 
+char* MyString::getStr()
+{
+	return _str;
+}
+
+void MyString::setStr(char* str)
+{
+	this->_length = 0;
+	if (str != nullptr) {
+		for (int i = 0; str[i] != '\0'; i++) {
+			this->_length++;
+		}
+		this->_str = new char[_length + 1];
+		for (int i = 0; i < _length; i++) {
+			_str[i] = str[i];
+		}
+		_str[_length] = '\0';
+	}
+}
 int MyString::lenght()
 {
 	return _length;

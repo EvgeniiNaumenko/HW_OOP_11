@@ -1,5 +1,8 @@
 #pragma once
+#include <iostream>
+using namespace std;
 #include "MyString.h"
+#include "IncorrectValueException.h"
 
 //Описати клас «Бітовий рядок» похідний від класу «Рядок»(Рядки цього класу можуть містити тільки символи
 //	0 і 1).Якщо в основі рядка, який ініціалізує зустрінуться
@@ -25,15 +28,16 @@
 class BinString: public MyString
 {
 public:
-	BinString();							//1) конструктор без параметрів;
+	BinString();								//1) конструктор без параметрів;
+	BinString(int);
 	BinString(const char*);						//2) конструктор, що приймає як параметр C - рядок;
-	BinString(const BinString&);			//3) конструктор копіювання;
+	BinString(const BinString&);				//3) конструктор копіювання;
 	BinString& operator=(const BinString&);		//4) оператор присвоєння;
-	~BinString();							//5) деструктор;
-	void changeSign();						//6) зміна знаку числа(переклад числа в додатковий код).
-	BinString operator+(const BinString&);	//7) складання бітових рядків(перевантажити оператори
-	BinString operator+=(const BinString&);	//+ і += );
-	bool operator==(const BinString&);		//8) перевірка на рівність(== ) і на нерівність(!= ).
+	~BinString();								//5) деструктор;
+	void changeSign();							//6) зміна знаку числа(переклад числа в додатковий код).
+	BinString operator+(BinString&);		//7) складання бітових рядків(перевантажити оператори
+	BinString operator+=(BinString&);		//+ і += );
+	bool operator==(const BinString&);			//8) перевірка на рівність(== ) і на нерівність(!= ).
 	bool operator!=(const BinString&);
 };
 

@@ -37,9 +37,24 @@ int main()
 {
 	BinString MyBinStr;
 	cout << MyBinStr.lenght()<<endl;
-	char* str = new char[11] {"1110011001"};
-	BinString MyBinStr2(str);
-	cout << MyBinStr2.lenght()<<endl;
-	MyBinStr2.show();
+	char* str = new char[9] {"11001110"};
+	char* str2 = new char[5] {"0010"};
+	try
+	{
+		BinString MyBinStr2(str);
+		BinString MyBinStr3(str2);
+		cout << MyBinStr2.lenght()<<endl;
+		MyBinStr2.show();
+		MyBinStr3.show();
+		BinString MyNewBin1 = MyBinStr2 + MyBinStr3;
+		MyNewBin1.show();
+		
+	}
+	catch (const IncorrectValueException& ex)
+	{
+		cout << "ERROR: " << ex.what() << endl;
+	}
+	delete[] str;
+	delete[] str2;
 	return 0;
 }
